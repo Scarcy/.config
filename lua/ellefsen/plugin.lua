@@ -38,6 +38,7 @@ local plugins = {
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
+			{ "benfowler/telescope-luasnip.nvim", module = "telescope._extensions.luasnip" }, -- if you wish to lazy-load
 		},
 	},
 	-- Startup Plugin
@@ -46,7 +47,35 @@ local plugins = {
 		event = "VimEnter",
 		config = function()
 			require("dashboard").setup({
-				-- config
+				theme = "hyper",
+				config = {
+					week_header = {
+						enable = true,
+					},
+					shortcut = {
+						{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+						{
+							icon = " ",
+							icon_hl = "@variable",
+							desc = "Files",
+							group = "Label",
+							action = "Telescope find_files",
+							key = "f",
+						},
+						{
+							desc = " Apps",
+							group = "DiagnosticHint",
+							action = "Telescope app",
+							key = "a",
+						},
+						{
+							desc = " dotfiles",
+							group = "Number",
+							action = "Telescope dotfiles",
+							key = "d",
+						},
+					},
+				},
 			})
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
@@ -75,6 +104,7 @@ local plugins = {
 	"nvim-telescope/telescope.nvim",
 	"nvim-telescope/telescope-fzy-native.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
+	"nvim-telescope/telescope-dap.nvim",
 	"ThePrimeagen/harpoon",
 	-- Shade for inactive window
 	-- 'sunjon/shade.nvim',
@@ -117,6 +147,7 @@ local plugins = {
 	"nvim-treesitter/nvim-treesitter-context",
 	-- { dir = "~/personal/projects/nvim-treesitter-context" },
 	-- Nice to have
+	{ "mfussenegger/nvim-dap" },
 	"numToStr/Comment.nvim",
 	"github/copilot.vim",
 	{ "j-hui/fidget.nvim", tag = "legacy" },
@@ -129,6 +160,14 @@ local plugins = {
 	"lewis6991/gitsigns.nvim",
 
 	-- UI
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
+		end,
+	},
 	"f-person/auto-dark-mode.nvim",
 	{
 		"rose-pine/neovim",

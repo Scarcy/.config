@@ -1,10 +1,9 @@
-
 require("ellefsen.plugin")
 require("ellefsen.remap")
 require("ellefsen.sets")
 require("ellefsen.color")
 require("ellefsen.commands")
-
+local nvimTreeAtStartup = false
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local yank_group = augroup("HighlightYank", {})
@@ -17,10 +16,11 @@ augroup FormatAutogroup
 augroup END
 ]])
 -- Auto open NvimTree
-vim.cmd([[
+if nvimTreeAtStartup then
+	vim.cmd([[
   autocmd VimEnter * lua vim.defer_fn(function() vim.cmd('NvimTreeOpen') end, 100)
 ]])
-
+end
 autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",

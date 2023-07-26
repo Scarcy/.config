@@ -1,28 +1,26 @@
-
 local builtin = require("telescope.builtin")
-
-vim.keymap.set("n", "<leader>tb", builtin.buffers, {desc = "buffers"})
-vim.keymap.set("n", "<leader>to", builtin.oldfiles, {desc = "oldfiles"})
+vim.keymap.set("n", "<leader>tb", builtin.buffers, { desc = "buffers" })
+vim.keymap.set("n", "<leader>to", builtin.oldfiles, { desc = "oldfiles" })
 vim.keymap.set("n", "<leader>tlb", function()
 	builtin.git_branches({ show_remote_tracking_branches = false })
-end, {desc = "local branches"})
+end, { desc = "local branches" })
 
 local wk = require("which-key")
 
 wk.register({
-  ["t"] = {
-    name = "Telescope",
-    b = { builtin.buffers, "buffers" },
-    o = { builtin.oldfiles, "oldfiles" },
-    l = { builtin.git_branches, "local branches" },
-    r = { builtin.git_branches, "remote branches" },
-    t = { builtin.git_branches, "local and remote branches" },
-    g = { builtin.live_grep, "live grep" },
-    h = { builtin.help_tags, "help tags" },
-    c = { builtin.commands, "commands" },
-    s = { builtin.lsp_document_symbols, "document symbols" },
-    f = { builtin.find_files, "find files" },
-  },
+	["t"] = {
+		name = "Telescope",
+		b = { builtin.buffers, "buffers" },
+		o = { builtin.oldfiles, "oldfiles" },
+		l = { builtin.git_branches, "local branches" },
+		r = { builtin.git_branches, "remote branches" },
+		t = { builtin.git_branches, "local and remote branches" },
+		g = { builtin.live_grep, "live grep" },
+		h = { builtin.help_tags, "help tags" },
+		c = { builtin.commands, "commands" },
+		s = { builtin.lsp_document_symbols, "document symbols" },
+		f = { builtin.find_files, "find files" },
+	},
 }, { prefix = "<leader>" })
 
 -- vim.keymap.set("n", "<leader>tlrb", builtin.git_branches, {desc = "local and remote branches"})
@@ -56,8 +54,11 @@ require("telescope").setup({
 				codeactions = false,
 			},
 		},
+		-- dap = {},
 	},
 })
-
+require("telescope").load_extension("luasnip")
+require("telescope").load_extension("dap")
+require("telescope").extensions.dap.configurations()
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("ui-select")
