@@ -55,6 +55,11 @@ require("telescope").setup({
 			},
 		},
 		-- dap = {},
+		project = {
+			base_dirs = {
+				{ "~/.config/nvim/", max_depth = 2 },
+			},
+		},
 	},
 })
 require("telescope").load_extension("luasnip")
@@ -62,3 +67,11 @@ require("telescope").load_extension("dap")
 require("telescope").extensions.dap.configurations()
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("ui-select")
+
+Dotfiles = function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< Dotfiles >",
+		cwd = os.getenv("HOME") .. "/.config/nvim/",
+	})
+end
+vim.api.nvim_command("command! Dotfiles lua Dotfiles()")

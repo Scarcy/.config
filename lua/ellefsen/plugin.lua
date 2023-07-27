@@ -63,15 +63,15 @@ local plugins = {
 							key = "f",
 						},
 						{
-							desc = " Apps",
+							desc = " VimBeGood",
 							group = "DiagnosticHint",
-							action = "Telescope app",
+							action = "VimBeGood",
 							key = "a",
 						},
 						{
 							desc = " dotfiles",
 							group = "Number",
-							action = "Telescope dotfiles",
+							action = "Dotfiles",
 							key = "d",
 						},
 					},
