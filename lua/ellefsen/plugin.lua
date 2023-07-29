@@ -41,7 +41,15 @@ local plugins = {
 			{ "benfowler/telescope-luasnip.nvim", module = "telescope._extensions.luasnip" }, -- if you wish to lazy-load
 		},
 	},
-	-- Startup Plugin
+	{
+		"folke/tokyonight.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme tokyonight]])
+		end,
+	},
 	{
 		"glepnir/dashboard-nvim",
 		event = "VimEnter",
@@ -158,7 +166,12 @@ local plugins = {
 	-- Git
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
-
+	{
+		"xiantang/darcula-dark.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 	-- UI
 	{
 		"AlexvZyl/nordic.nvim",

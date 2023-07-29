@@ -1,10 +1,8 @@
-
 vim.opt.clipboard = "unnamedplus"
 vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.completeopt = { "menuone", "noselect" }
 
 vim.opt.guicursor = "n-v-c-i:block"
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
