@@ -6,12 +6,11 @@ vim.opt.guicursor = "n-v-c-i:block"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
-
+vim.opt.pumheight = 15
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-
 vim.opt.smartindent = true
 
 -- Stop auto commentint -> help fo-table
