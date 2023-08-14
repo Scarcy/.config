@@ -41,14 +41,24 @@ local plugins = {
 			{ "benfowler/telescope-luasnip.nvim", module = "telescope._extensions.luasnip" }, -- if you wish to lazy-load
 		},
 	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- load the colorscheme here
+	-- 		vim.cmd([[colorscheme rose-pine-moon]])
+	-- 	end,
+	-- },
 	{
-		"folke/tokyonight.nvim",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
-		end,
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			opt = true,
+		},
+		opts = {
+			-- theme = "catppuccin"
+		},
 	},
 	{
 		"glepnir/dashboard-nvim",
@@ -113,6 +123,15 @@ local plugins = {
 	"nvim-telescope/telescope-fzy-native.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
 	"nvim-telescope/telescope-dap.nvim",
+	-- DAP debugging
+	{ "mfussenegger/nvim-dap" },
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+	},
+	"theHamsta/nvim-dap-virtual-text",
 	"ThePrimeagen/harpoon",
 	-- Shade for inactive window
 	-- 'sunjon/shade.nvim',
@@ -140,6 +159,25 @@ local plugins = {
 			require("nvim-tree").setup({})
 		end,
 	},
+	-- {
+	-- 	"luckasRanarison/nvim-devdocs",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	opts = {},
+	-- },
+
+	{
+		"Scarcy/nvim-devdocs",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		opts = {},
+	},
 	-- Snippets
 	"RobertBrunhage/flutter-riverpod-snippets",
 	"Neevash/awesome-flutter-snippets",
@@ -155,9 +193,8 @@ local plugins = {
 	"nvim-treesitter/nvim-treesitter-context",
 	-- { dir = "~/personal/projects/nvim-treesitter-context" },
 	-- Nice to have
-	{ "mfussenegger/nvim-dap" },
 	"numToStr/Comment.nvim",
-	"github/copilot.vim",
+	-- "github/copilot.vim",
 	{ "j-hui/fidget.nvim", tag = "legacy" },
 	{
 		"stevearc/dressing.nvim",

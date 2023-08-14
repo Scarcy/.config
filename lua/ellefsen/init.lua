@@ -3,6 +3,7 @@ require("ellefsen.remap")
 require("ellefsen.sets")
 require("ellefsen.color")
 require("ellefsen.commands")
+require("ellefsen.dap")
 local nvimTreeAtStartup = false
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup

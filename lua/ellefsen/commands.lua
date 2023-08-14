@@ -7,7 +7,7 @@ function _G.run_c_program(args)
 	local bufname = api.nvim_buf_get_name(bufnr)
 	local filename = bufname:match("^.+/(.+)$")
 	local basename = filename:match("(.+)%..+$")
-	vim.cmd("!clang " .. filename .. " -o " .. basename)
+	vim.cmd("!clang -g" .. filename .. " -o " .. basename)
 	vim.cmd("vnew") -- Open a new vertical split
 	local newbufnr = api.nvim_get_current_buf()
 	local jobid = vim.fn.termopen("./" .. basename .. " " .. arguments)
@@ -21,3 +21,24 @@ function _G.run_c_with_args(args)
 end
 api.nvim_set_keymap("n", "<leader>r", ":lua run_c_program()<cr>", { noremap = true, silent = true })
 api.nvim_command("command! -nargs=*  Run lua run_c_with_args(<q-args>)")
+
+function _G.devdocsbuffer(args)
+	local map = {
+		["c"] = "c",
+		["js"] = "javascript",
+		["py"] = "python",
+		["lua"] = "lua",
+		["cpp"] = "cpp",
+		["sh"] = "bash",
+	}
+	local filetype = vim.bo.filetype
+
+	if map[filetype] == nil then
+		print("No devdocs for filetype: " .. filetype)
+		return
+	end
+
+	vim.cmd("DevdocsOpen " .. map[filetype])
+end
+
+api.nvim_set_keymap("n", "<leader>å", ":lua devdocsbuffer()<cr>", { noremap = true, silent = true })
