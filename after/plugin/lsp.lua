@@ -82,7 +82,15 @@ lsp_config["dartls"].setup({
 		},
 	},
 })
-
+require("lspconfig").rust_analyzer.setup({
+	settings = {
+		["rust-analyzer"] = {
+			diagnostics = {
+				enable = true,
+			},
+		},
+	},
+})
 lsp_zero.setup()
 -- require("clangd_extensions").setup({
 -- 	server = {

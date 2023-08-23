@@ -15,6 +15,9 @@ require("formatter").setup({
 		c = {
 			require("formatter.filetypes.c").clangformat,
 		},
+		rust = {
+			require("formatter.filetypes.rust").rustfmt,
+		},
 		["*"] = {
 			-- "formatter.filetypes.any" defines default configurations for any
 			-- filetype
